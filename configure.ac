@@ -46,6 +46,7 @@ AC_CONFIG_FILES([
         Makefile
         include/Makefile
         src/Makefile
+        src/ch05/Makefile
         script/Makefile
         script/python/Makefile
         script/util/Makefile
