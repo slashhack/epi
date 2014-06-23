@@ -778,7 +778,7 @@ with_gnu_ld
 with_sysroot
 enable_libtool_lock
 enable_debug
-enable_optimize
+enable_release
 enable_profile
 '
       ac_precious_vars='build_alias
@@ -1425,7 +1425,7 @@ Optional Features:
                           speeds up one-time build
   --disable-libtool-lock  avoid locking (might break parallel builds)
   --enable-debug          enable debug code (default is no)
-  --enable-optimize       enable optimize code (default is no)
+  --enable-release        enable release code (default is no)
   --enable-profile        enable profile code (default is no)
 
 Optional Packages:
@@ -16911,6 +16911,96 @@ $as_echo "$am_cv_python_pyexecdir" >&6; }
 #add profile-guided optimization
 
 # Checks for libraries.
+{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for dlopen in -ldl" >&5
+$as_echo_n "checking for dlopen in -ldl... " >&6; }
+if ${ac_cv_lib_dl_dlopen+:} false; then :
+  $as_echo_n "(cached) " >&6
+else
+  ac_check_lib_save_LIBS=$LIBS
+LIBS="-ldl  $LIBS"
+cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+
+/* Override any GCC internal prototype to avoid an error.
+   Use char because int might match the return type of a GCC
+   builtin and then its argument prototype would still apply.  */
+#ifdef __cplusplus
+extern "C"
+#endif
+char dlopen ();
+int
+main ()
+{
+return dlopen ();
+  ;
+  return 0;
+}
+_ACEOF
+if ac_fn_c_try_link "$LINENO"; then :
+  ac_cv_lib_dl_dlopen=yes
+else
+  ac_cv_lib_dl_dlopen=no
+fi
+rm -f core conftest.err conftest.$ac_objext \
+    conftest$ac_exeext conftest.$ac_ext
+LIBS=$ac_check_lib_save_LIBS
+fi
+{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $ac_cv_lib_dl_dlopen" >&5
+$as_echo "$ac_cv_lib_dl_dlopen" >&6; }
+if test "x$ac_cv_lib_dl_dlopen" = xyes; then :
+  cat >>confdefs.h <<_ACEOF
+#define HAVE_LIBDL 1
+_ACEOF
+
+  LIBS="-ldl $LIBS"
+
+fi
+
+{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for clock_gettime in -lrt" >&5
+$as_echo_n "checking for clock_gettime in -lrt... " >&6; }
+if ${ac_cv_lib_rt_clock_gettime+:} false; then :
+  $as_echo_n "(cached) " >&6
+else
+  ac_check_lib_save_LIBS=$LIBS
+LIBS="-lrt  $LIBS"
+cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+
+/* Override any GCC internal prototype to avoid an error.
+   Use char because int might match the return type of a GCC
+   builtin and then its argument prototype would still apply.  */
+#ifdef __cplusplus
+extern "C"
+#endif
+char clock_gettime ();
+int
+main ()
+{
+return clock_gettime ();
+  ;
+  return 0;
+}
+_ACEOF
+if ac_fn_c_try_link "$LINENO"; then :
+  ac_cv_lib_rt_clock_gettime=yes
+else
+  ac_cv_lib_rt_clock_gettime=no
+fi
+rm -f core conftest.err conftest.$ac_objext \
+    conftest$ac_exeext conftest.$ac_ext
+LIBS=$ac_check_lib_save_LIBS
+fi
+{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $ac_cv_lib_rt_clock_gettime" >&5
+$as_echo "$ac_cv_lib_rt_clock_gettime" >&6; }
+if test "x$ac_cv_lib_rt_clock_gettime" = xyes; then :
+  cat >>confdefs.h <<_ACEOF
+#define HAVE_LIBRT 1
+_ACEOF
+
+  LIBS="-lrt $LIBS"
+
+fi
+
 
 # Checks for header files.
 for ac_header in stdlib.h string.h
@@ -16927,12 +17017,79 @@ fi
 done
 
 
+# Checks for header files.
+for ac_header in float.h inttypes.h limits.h stdint.h stdlib.h string.h
+do :
+  as_ac_Header=`$as_echo "ac_cv_header_$ac_header" | $as_tr_sh`
+ac_fn_c_check_header_mongrel "$LINENO" "$ac_header" "$as_ac_Header" "$ac_includes_default"
+if eval test \"x\$"$as_ac_Header"\" = x"yes"; then :
+  cat >>confdefs.h <<_ACEOF
+#define `$as_echo "HAVE_$ac_header" | $as_tr_cpp` 1
+_ACEOF
+
+fi
+
+done
+
+
 # Checks for typedefs, structures, and compiler characteristics.
+{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for inline" >&5
+$as_echo_n "checking for inline... " >&6; }
+if ${ac_cv_c_inline+:} false; then :
+  $as_echo_n "(cached) " >&6
+else
+  ac_cv_c_inline=no
+for ac_kw in inline __inline__ __inline; do
+  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+#ifndef __cplusplus
+typedef int foo_t;
+static $ac_kw foo_t static_foo () {return 0; }
+$ac_kw foo_t foo () {return 0; }
+#endif
+
+_ACEOF
+if ac_fn_c_try_compile "$LINENO"; then :
+  ac_cv_c_inline=$ac_kw
+fi
+rm -f core conftest.err conftest.$ac_objext conftest.$ac_ext
+  test "$ac_cv_c_inline" != no && break
+done
+
+fi
+{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $ac_cv_c_inline" >&5
+$as_echo "$ac_cv_c_inline" >&6; }
+
+case $ac_cv_c_inline in
+  inline | yes) ;;
+  *)
+    case $ac_cv_c_inline in
+      no) ac_val=;;
+      *) ac_val=$ac_cv_c_inline;;
+    esac
+    cat >>confdefs.h <<_ACEOF
+#ifndef __cplusplus
+#define inline $ac_val
+#endif
+_ACEOF
+    ;;
+esac
+
 
 # Checks for library functions.
+for ac_func in clock_gettime
+do :
+  ac_fn_c_check_func "$LINENO" "clock_gettime" "ac_cv_func_clock_gettime"
+if test "x$ac_cv_func_clock_gettime" = xyes; then :
+  cat >>confdefs.h <<_ACEOF
+#define HAVE_CLOCK_GETTIME 1
+_ACEOF
+
+fi
+done
+
 
 ac_config_files="$ac_config_files Makefile include/Makefile src/Makefile src/ch05/Makefile script/Makefile script/python/Makefile script/util/Makefile data/Makefile etc/Makefile"
-
 
 
 # Configure options: --enable-debug[=no].
@@ -16944,12 +17101,12 @@ else
 fi
 
 
-# Configure options: --enable-optimize[=no].
-# Check whether --enable-optimize was given.
-if test "${enable_optimize+set}" = set; then :
-  enableval=$enable_optimize; optimize="$withval"
+# Configure options: --enable-release[=no].
+# Check whether --enable-release was given.
+if test "${enable_release+set}" = set; then :
+  enableval=$enable_release; release="$withval"
 else
-  optimize=no
+  release=no
 fi
 
 
@@ -16962,6 +17119,58 @@ else
 fi
 
 
+GCC_COMMON_OPTION=""
+GCC_COMMON_OPTION+=" -Wall -Wextra -Wformat=2 -Wstrict-aliasing=2 -Wcast-align "
+GCC_COMMON_OPTION+=" -Wwrite-strings -Wconversion -Wfloat-equal -Wpointer-arith "
+GCC_COMMON_OPTION+=" -Wswitch-enum -rdynamic "
+
+#LIBS="-lrt -ldl"
+
+#CFLAGS="$GCC_COMMON_OPTION"
+#CXXFLAGS="$GCC_COMMON_OPTION"
+
+# add libmudflap
+# -g -fmudflap for compiler, -lmudflap for linker
+# elf and dwarf information to debug build
+
+# release : O3 native optimize
+# default : -g O2 ..
+# debug   : -g3 -O0 ...
+
+if test $debug = yes ; then
+    GCC_COMMON_OPTION+=" -g3 -O0 -ftrapv -fstack-protector "
+    CFLAGS="$GCC_COMMON_OPTION"
+    CXXFLAGS="$GCC_COMMON_OPTION -Weffc++"
+else
+    if test $release = yes ; then
+        GCC_COMMON_OPTION+=" -g0 -O3 -march=native -mtune=native"
+        CFLAGS="$GCC_COMMON_OPTION"
+        CXXFLAGS="$GCC_COMMON_OPTION -Weffc++"
+    else
+        GCC_COMMON_OPTION+=" -g -O2 -ftrapv -fstack-protector -D_FORTIFY_SOURCE=2 "
+        CFLAGS="$GCC_COMMON_OPTION"
+        CXXFLAGS="$GCC_COMMON_OPTION -Weffc++"
+    fi
+fi
+# if debug
+#   ...
+# else
+#  if release
+#     ...
+#  else
+#     ...
+# done
+
+# if profile
+#   ...
+
+#AC_SUBST(CFLAGS)
+#AC_SUBST(CXXFLAGS)
+#AC_SUBST(LDFLAGS)
+
+# TODO
+CFLAGS="-std=c99 $CFLAGS"
+CXXFLAGS="-std=c++11 $CXXFLAGS"
 
 cat >confcache <<\_ACEOF
 # This file is a shell script that caches the results of configure
@@ -19617,3 +19826,4 @@ echo "
      C++ Compiler...: $CXX $CXXFLAGS $CPPFLAGS
      Linker.........: $LD $LDFLAGS $LIBS
 "
+
