@@ -1,6 +1,11 @@
 #ifndef INCLUDE_DBG_H
 #define INCLUDE_DBG_H
 
+#pragma GCC diagnostic push
+
+#pragma GCC diagnostic ignored "-Wvarargs"
+#pragma GCC diagnostic ignored "-Wformat"
+
 #ifndef __PRETTY_FUNCTION__
 #define __PRETTY_FUNCTION__ __func__
 #endif
@@ -163,5 +168,7 @@ inline void __dbg_backtrace(const char * fmt, const char * file,
 }
 
 #endif
+
+#pragma GCC diagnostic pop
 
 #endif

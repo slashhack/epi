@@ -7,7 +7,7 @@ int multiply1(const T x, const T y, T &out) {
   T result = T(0);
 
   for(int i = 0, i_max = sizeof(T) * 8; i < i_max; ++i) {
-    if((y >> i) & 1) {
+    if((y >> i) & T(1)) {
       result += (x << i);
     }
   }
@@ -18,6 +18,12 @@ int multiply1(const T x, const T y, T &out) {
 }
 
 // solution from book
+template <typename T>
+int multiply2(const T x, const T y, T &out) {
+  int err = 0;
+
+  return err;
+}
 
 int main(int argc, char **argv) {
 

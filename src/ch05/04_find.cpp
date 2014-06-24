@@ -8,7 +8,7 @@ int find1(const T in, T &out) {
     // swap i and i + 1 bit
     // if not the same as in, then return otherwise keep going
 
-    T _i = in & (1 << i);
+    T _i = in & (T(1) << i);
     T _j = in & (1 << (i + 1));
 
     _i >>= i;
@@ -26,12 +26,14 @@ int find1(const T in, T &out) {
 
 int main(int argc, char **argv) {
 
-  int i = 0b01100;
-  int j = 0;
+  for(int i = 1, i_max = 10; i < i_max; i++) {
+    uint8_t in = uint8_t(i);
+    uint8_t out = 0;
 
-  find1(i, j);
+    find1(in, out);
 
-  printf("i = %d and j = %d\n", i, j);
+    printf("%d => %d\n", in, out);
+  }
   
   return 0;
 }

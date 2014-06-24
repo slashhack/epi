@@ -1,5 +1,6 @@
 #include "include/common.h"
 
+
 template <typename T>
 int divide1(const T x, const T y, T &out) {
   int err = 0;

@@ -13,7 +13,11 @@ int reverse1(const T in, T &out) {
   return err;
 }
 
+// solution alternative
+// consider it as reverse binary divide by 2 and ...
+
 // lookup table
+
  
 int main(int argc, char **argv) {
 
