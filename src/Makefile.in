@@ -237,7 +237,6 @@ EGREP = @EGREP@
 EXEEXT = @EXEEXT@
 FGREP = @FGREP@
 GREP = @GREP@
-HAVE_CXX11 = @HAVE_CXX11@
 INSTALL = @INSTALL@
 INSTALL_DATA = @INSTALL_DATA@
 INSTALL_PROGRAM = @INSTALL_PROGRAM@
@@ -337,7 +336,13 @@ top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
 SUBDIRS = \
-	ch05
+	ch05 \
+	ch06 \
+	ch07 \
+	ch08 \
+	ch09 \
+	ch10 \
+	ch11
 
 hello_SOURCES = hello.c
 hello_CFLAGS = -I$(top_srcdir)

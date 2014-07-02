@@ -24,8 +24,8 @@ AC_PROG_INSTALL
 AC_PROG_LN_S
 AC_PROG_MAKE_SET
 
-AC_PROG_CC_STDC
-AX_CXX_COMPILE_STDCXX_11
+# AC_PROG_CC_STDC
+# AX_CXX_COMPILE_STDCXX_11
 
 AM_PATH_PYTHON([3.0])
 
@@ -54,6 +54,12 @@ AC_CONFIG_FILES([
         include/Makefile
         src/Makefile
         src/ch05/Makefile
+        src/ch06/Makefile
+        src/ch07/Makefile
+        src/ch08/Makefile
+        src/ch09/Makefile
+        src/ch10/Makefile
+        src/ch11/Makefile
         script/Makefile
         script/python/Makefile
         script/util/Makefile

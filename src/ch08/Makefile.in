@@ -78,13 +78,8 @@ PRE_UNINSTALL = :
 POST_UNINSTALL = :
 build_triplet = @build@
 host_triplet = @host@
-noinst_PROGRAMS = 00_basic$(EXEEXT) 01_parity$(EXEEXT) \
-	02_swap$(EXEEXT) 03_reverse$(EXEEXT) 04_find$(EXEEXT) \
-	05_multiply$(EXEEXT) 06_divide$(EXEEXT) 07_power$(EXEEXT) \
-	08_convert$(EXEEXT) 09_decode$(EXEEXT) 10_reverse$(EXEEXT) \
-	11_palindrome$(EXEEXT) 12_random$(EXEEXT) \
-	13_intersect$(EXEEXT) 14_open$(EXEEXT) 15_gcd$(EXEEXT)
-subdir = src/ch05
+noinst_PROGRAMS = 00_basic$(EXEEXT) 01_merge$(EXEEXT)
+subdir = src/ch08
 DIST_COMMON = $(srcdir)/Makefile.in $(srcdir)/Makefile.am \
 	$(top_srcdir)/autoconf/depcomp
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
@@ -106,51 +101,9 @@ AM_V_lt = $(am__v_lt_@AM_V@)
 am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
 am__v_lt_0 = --silent
 am__v_lt_1 = 
-01_parity_SOURCES = 01_parity.c
-01_parity_OBJECTS = 01_parity.$(OBJEXT)
-01_parity_LDADD = $(LDADD)
-02_swap_SOURCES = 02_swap.c
-02_swap_OBJECTS = 02_swap.$(OBJEXT)
-02_swap_LDADD = $(LDADD)
-03_reverse_SOURCES = 03_reverse.c
-03_reverse_OBJECTS = 03_reverse.$(OBJEXT)
-03_reverse_LDADD = $(LDADD)
-04_find_SOURCES = 04_find.c
-04_find_OBJECTS = 04_find.$(OBJEXT)
-04_find_LDADD = $(LDADD)
-05_multiply_SOURCES = 05_multiply.c
-05_multiply_OBJECTS = 05_multiply.$(OBJEXT)
-05_multiply_LDADD = $(LDADD)
-06_divide_SOURCES = 06_divide.c
-06_divide_OBJECTS = 06_divide.$(OBJEXT)
-06_divide_LDADD = $(LDADD)
-07_power_SOURCES = 07_power.c
-07_power_OBJECTS = 07_power.$(OBJEXT)
-07_power_LDADD = $(LDADD)
-08_convert_SOURCES = 08_convert.c
-08_convert_OBJECTS = 08_convert.$(OBJEXT)
-08_convert_LDADD = $(LDADD)
-09_decode_SOURCES = 09_decode.c
-09_decode_OBJECTS = 09_decode.$(OBJEXT)
-09_decode_LDADD = $(LDADD)
-10_reverse_SOURCES = 10_reverse.c
-10_reverse_OBJECTS = 10_reverse.$(OBJEXT)
-10_reverse_LDADD = $(LDADD)
-11_palindrome_SOURCES = 11_palindrome.c
-11_palindrome_OBJECTS = 11_palindrome.$(OBJEXT)
-11_palindrome_LDADD = $(LDADD)
-12_random_SOURCES = 12_random.c
-12_random_OBJECTS = 12_random.$(OBJEXT)
-12_random_LDADD = $(LDADD)
-13_intersect_SOURCES = 13_intersect.c
-13_intersect_OBJECTS = 13_intersect.$(OBJEXT)
-13_intersect_LDADD = $(LDADD)
-14_open_SOURCES = 14_open.c
-14_open_OBJECTS = 14_open.$(OBJEXT)
-14_open_LDADD = $(LDADD)
-15_gcd_SOURCES = 15_gcd.c
-15_gcd_OBJECTS = 15_gcd.$(OBJEXT)
-15_gcd_LDADD = $(LDADD)
+am_01_merge_OBJECTS = 01_merge.$(OBJEXT)
+01_merge_OBJECTS = $(am_01_merge_OBJECTS)
+01_merge_LDADD = $(LDADD)
 AM_V_P = $(am__v_P_@AM_V@)
 am__v_P_ = $(am__v_P_@AM_DEFAULT_V@)
 am__v_P_0 = false
@@ -167,24 +120,6 @@ DEFAULT_INCLUDES = -I.@am__isrc@ -I$(top_builddir)
 depcomp = $(SHELL) $(top_srcdir)/autoconf/depcomp
 am__depfiles_maybe = depfiles
 am__mv = mv -f
-COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \
-	$(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
-LTCOMPILE = $(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) \
-	$(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) \
-	$(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) \
-	$(AM_CFLAGS) $(CFLAGS)
-AM_V_CC = $(am__v_CC_@AM_V@)
-am__v_CC_ = $(am__v_CC_@AM_DEFAULT_V@)
-am__v_CC_0 = @echo "  CC      " $@;
-am__v_CC_1 = 
-CCLD = $(CC)
-LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) \
-	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) \
-	$(AM_LDFLAGS) $(LDFLAGS) -o $@
-AM_V_CCLD = $(am__v_CCLD_@AM_V@)
-am__v_CCLD_ = $(am__v_CCLD_@AM_DEFAULT_V@)
-am__v_CCLD_0 = @echo "  CCLD    " $@;
-am__v_CCLD_1 = 
 CXXCOMPILE = $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) \
 	$(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS)
 LTCXXCOMPILE = $(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) \
@@ -203,14 +138,26 @@ AM_V_CXXLD = $(am__v_CXXLD_@AM_V@)
 am__v_CXXLD_ = $(am__v_CXXLD_@AM_DEFAULT_V@)
 am__v_CXXLD_0 = @echo "  CXXLD   " $@;
 am__v_CXXLD_1 = 
-SOURCES = $(00_basic_SOURCES) 01_parity.c 02_swap.c 03_reverse.c \
-	04_find.c 05_multiply.c 06_divide.c 07_power.c 08_convert.c \
-	09_decode.c 10_reverse.c 11_palindrome.c 12_random.c \
-	13_intersect.c 14_open.c 15_gcd.c
-DIST_SOURCES = $(00_basic_SOURCES) 01_parity.c 02_swap.c 03_reverse.c \
-	04_find.c 05_multiply.c 06_divide.c 07_power.c 08_convert.c \
-	09_decode.c 10_reverse.c 11_palindrome.c 12_random.c \
-	13_intersect.c 14_open.c 15_gcd.c
+COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \
+	$(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
+LTCOMPILE = $(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) \
+	$(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) \
+	$(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) \
+	$(AM_CFLAGS) $(CFLAGS)
+AM_V_CC = $(am__v_CC_@AM_V@)
+am__v_CC_ = $(am__v_CC_@AM_DEFAULT_V@)
+am__v_CC_0 = @echo "  CC      " $@;
+am__v_CC_1 = 
+CCLD = $(CC)
+LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) \
+	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) \
+	$(AM_LDFLAGS) $(LDFLAGS) -o $@
+AM_V_CCLD = $(am__v_CCLD_@AM_V@)
+am__v_CCLD_ = $(am__v_CCLD_@AM_DEFAULT_V@)
+am__v_CCLD_0 = @echo "  CCLD    " $@;
+am__v_CCLD_1 = 
+SOURCES = $(00_basic_SOURCES) $(01_merge_SOURCES)
+DIST_SOURCES = $(00_basic_SOURCES) $(01_merge_SOURCES)
 am__can_run_installinfo = \
   case $$AM_UPDATE_INFO_DIR in \
     n|no|NO) false;; \
@@ -370,10 +317,13 @@ AM_CPPFLAGS = \
 00_basic_SOURCES = \
 	00_basic.cpp
 
+01_merge_SOURCES = \
+	01_merge.cpp list.hpp
+
 all: all-am
 
 .SUFFIXES:
-.SUFFIXES: .c .cpp .lo .o .obj
+.SUFFIXES: .cpp .lo .o .obj
 $(srcdir)/Makefile.in:  $(srcdir)/Makefile.am  $(am__configure_deps)
 	@for dep in $?; do \
 	  case '$(am__configure_deps)' in \
@@ -383,9 +333,9 @@ $(srcdir)/Makefile.in:  $(srcdir)/Makefile.am  $(am__configure_deps)
 	      exit 1;; \
 	  esac; \
 	done; \
-	echo ' cd $(top_srcdir) && $(AUTOMAKE) --gnu src/ch05/Makefile'; \
+	echo ' cd $(top_srcdir) && $(AUTOMAKE) --gnu src/ch08/Makefile'; \
 	$(am__cd) $(top_srcdir) && \
-	  $(AUTOMAKE) --gnu src/ch05/Makefile
+	  $(AUTOMAKE) --gnu src/ch08/Makefile
 .PRECIOUS: Makefile
 Makefile: $(srcdir)/Makefile.in $(top_builddir)/config.status
 	@case '$?' in \
@@ -418,65 +368,9 @@ clean-noinstPROGRAMS:
 	@rm -f 00_basic$(EXEEXT)
 	$(AM_V_CXXLD)$(CXXLINK) $(00_basic_OBJECTS) $(00_basic_LDADD) $(LIBS)
 
-01_parity$(EXEEXT): $(01_parity_OBJECTS) $(01_parity_DEPENDENCIES) $(EXTRA_01_parity_DEPENDENCIES) 
-	@rm -f 01_parity$(EXEEXT)
-	$(AM_V_CCLD)$(LINK) $(01_parity_OBJECTS) $(01_parity_LDADD) $(LIBS)
-
-02_swap$(EXEEXT): $(02_swap_OBJECTS) $(02_swap_DEPENDENCIES) $(EXTRA_02_swap_DEPENDENCIES) 
-	@rm -f 02_swap$(EXEEXT)
-	$(AM_V_CCLD)$(LINK) $(02_swap_OBJECTS) $(02_swap_LDADD) $(LIBS)
-
-03_reverse$(EXEEXT): $(03_reverse_OBJECTS) $(03_reverse_DEPENDENCIES) $(EXTRA_03_reverse_DEPENDENCIES) 
-	@rm -f 03_reverse$(EXEEXT)
-	$(AM_V_CCLD)$(LINK) $(03_reverse_OBJECTS) $(03_reverse_LDADD) $(LIBS)
-
-04_find$(EXEEXT): $(04_find_OBJECTS) $(04_find_DEPENDENCIES) $(EXTRA_04_find_DEPENDENCIES) 
-	@rm -f 04_find$(EXEEXT)
-	$(AM_V_CCLD)$(LINK) $(04_find_OBJECTS) $(04_find_LDADD) $(LIBS)
-
-05_multiply$(EXEEXT): $(05_multiply_OBJECTS) $(05_multiply_DEPENDENCIES) $(EXTRA_05_multiply_DEPENDENCIES) 
-	@rm -f 05_multiply$(EXEEXT)
-	$(AM_V_CCLD)$(LINK) $(05_multiply_OBJECTS) $(05_multiply_LDADD) $(LIBS)
-
-06_divide$(EXEEXT): $(06_divide_OBJECTS) $(06_divide_DEPENDENCIES) $(EXTRA_06_divide_DEPENDENCIES) 
-	@rm -f 06_divide$(EXEEXT)
-	$(AM_V_CCLD)$(LINK) $(06_divide_OBJECTS) $(06_divide_LDADD) $(LIBS)
-
-07_power$(EXEEXT): $(07_power_OBJECTS) $(07_power_DEPENDENCIES) $(EXTRA_07_power_DEPENDENCIES) 
-	@rm -f 07_power$(EXEEXT)
-	$(AM_V_CCLD)$(LINK) $(07_power_OBJECTS) $(07_power_LDADD) $(LIBS)
-
-08_convert$(EXEEXT): $(08_convert_OBJECTS) $(08_convert_DEPENDENCIES) $(EXTRA_08_convert_DEPENDENCIES) 
-	@rm -f 08_convert$(EXEEXT)
-	$(AM_V_CCLD)$(LINK) $(08_convert_OBJECTS) $(08_convert_LDADD) $(LIBS)
-
-09_decode$(EXEEXT): $(09_decode_OBJECTS) $(09_decode_DEPENDENCIES) $(EXTRA_09_decode_DEPENDENCIES) 
-	@rm -f 09_decode$(EXEEXT)
-	$(AM_V_CCLD)$(LINK) $(09_decode_OBJECTS) $(09_decode_LDADD) $(LIBS)
-
-10_reverse$(EXEEXT): $(10_reverse_OBJECTS) $(10_reverse_DEPENDENCIES) $(EXTRA_10_reverse_DEPENDENCIES) 
-	@rm -f 10_reverse$(EXEEXT)
-	$(AM_V_CCLD)$(LINK) $(10_reverse_OBJECTS) $(10_reverse_LDADD) $(LIBS)
-
-11_palindrome$(EXEEXT): $(11_palindrome_OBJECTS) $(11_palindrome_DEPENDENCIES) $(EXTRA_11_palindrome_DEPENDENCIES) 
-	@rm -f 11_palindrome$(EXEEXT)
-	$(AM_V_CCLD)$(LINK) $(11_palindrome_OBJECTS) $(11_palindrome_LDADD) $(LIBS)
-
-12_random$(EXEEXT): $(12_random_OBJECTS) $(12_random_DEPENDENCIES) $(EXTRA_12_random_DEPENDENCIES) 
-	@rm -f 12_random$(EXEEXT)
-	$(AM_V_CCLD)$(LINK) $(12_random_OBJECTS) $(12_random_LDADD) $(LIBS)
-
-13_intersect$(EXEEXT): $(13_intersect_OBJECTS) $(13_intersect_DEPENDENCIES) $(EXTRA_13_intersect_DEPENDENCIES) 
-	@rm -f 13_intersect$(EXEEXT)
-	$(AM_V_CCLD)$(LINK) $(13_intersect_OBJECTS) $(13_intersect_LDADD) $(LIBS)
-
-14_open$(EXEEXT): $(14_open_OBJECTS) $(14_open_DEPENDENCIES) $(EXTRA_14_open_DEPENDENCIES) 
-	@rm -f 14_open$(EXEEXT)
-	$(AM_V_CCLD)$(LINK) $(14_open_OBJECTS) $(14_open_LDADD) $(LIBS)
-
-15_gcd$(EXEEXT): $(15_gcd_OBJECTS) $(15_gcd_DEPENDENCIES) $(EXTRA_15_gcd_DEPENDENCIES) 
-	@rm -f 15_gcd$(EXEEXT)
-	$(AM_V_CCLD)$(LINK) $(15_gcd_OBJECTS) $(15_gcd_LDADD) $(LIBS)
+01_merge$(EXEEXT): $(01_merge_OBJECTS) $(01_merge_DEPENDENCIES) $(EXTRA_01_merge_DEPENDENCIES) 
+	@rm -f 01_merge$(EXEEXT)
+	$(AM_V_CXXLD)$(CXXLINK) $(01_merge_OBJECTS) $(01_merge_LDADD) $(LIBS)
 
 mostlyclean-compile:
 	-rm -f *.$(OBJEXT)
@@ -485,42 +379,7 @@ distclean-compile:
 	-rm -f *.tab.c
 
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/00_basic.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/01_parity.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/02_swap.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/03_reverse.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/04_find.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/05_multiply.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/06_divide.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/07_power.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/08_convert.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/09_decode.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/10_reverse.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/11_palindrome.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/12_random.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/13_intersect.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/14_open.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/15_gcd.Po@am__quote@
-
-.c.o:
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(COMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ $<
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/$*.Tpo $(DEPDIR)/$*.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$<' object='$@' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(COMPILE) -c -o $@ $<
-
-.c.obj:
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(COMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ `$(CYGPATH_W) '$<'`
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/$*.Tpo $(DEPDIR)/$*.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$<' object='$@' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(COMPILE) -c -o $@ `$(CYGPATH_W) '$<'`
-
-.c.lo:
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(LTCOMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ $<
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/$*.Tpo $(DEPDIR)/$*.Plo
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$<' object='$@' libtool=yes @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LTCOMPILE) -c -o $@ $<
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/01_merge.Po@am__quote@
 
 .cpp.o:
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXXCOMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ $<
