@@ -78,12 +78,8 @@ PRE_UNINSTALL = :
 POST_UNINSTALL = :
 build_triplet = @build@
 host_triplet = @host@
-noinst_PROGRAMS = 00_basic$(EXEEXT) 01_merge$(EXEEXT) 02_sort$(EXEEXT) \
-	03_sort$(EXEEXT) 04_knn$(EXEEXT) 05_median$(EXEEXT) \
-	06_find$(EXEEXT) 07_fair$(EXEEXT) 08_k_median$(EXEEXT) \
-	09_k_heap$(EXEEXT) 10_k_heap$(EXEEXT) \
-	11_stack_and_queue$(EXEEXT)
-subdir = src/ch11
+noinst_PROGRAMS = 00_basic$(EXEEXT)
+subdir = src/ch20
 DIST_COMMON = $(srcdir)/Makefile.in $(srcdir)/Makefile.am \
 	$(top_srcdir)/autoconf/depcomp
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
@@ -105,39 +101,6 @@ AM_V_lt = $(am__v_lt_@AM_V@)
 am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
 am__v_lt_0 = --silent
 am__v_lt_1 = 
-am_01_merge_OBJECTS = 01_merge.$(OBJEXT)
-01_merge_OBJECTS = $(am_01_merge_OBJECTS)
-01_merge_LDADD = $(LDADD)
-am_02_sort_OBJECTS = 02_sort.$(OBJEXT)
-02_sort_OBJECTS = $(am_02_sort_OBJECTS)
-02_sort_LDADD = $(LDADD)
-am_03_sort_OBJECTS = 03_sort.$(OBJEXT)
-03_sort_OBJECTS = $(am_03_sort_OBJECTS)
-03_sort_LDADD = $(LDADD)
-am_04_knn_OBJECTS = 04_knn.$(OBJEXT)
-04_knn_OBJECTS = $(am_04_knn_OBJECTS)
-04_knn_LDADD = $(LDADD)
-am_05_median_OBJECTS = 05_median.$(OBJEXT)
-05_median_OBJECTS = $(am_05_median_OBJECTS)
-05_median_LDADD = $(LDADD)
-am_06_find_OBJECTS = 06_find.$(OBJEXT)
-06_find_OBJECTS = $(am_06_find_OBJECTS)
-06_find_LDADD = $(LDADD)
-am_07_fair_OBJECTS = 07_fair.$(OBJEXT)
-07_fair_OBJECTS = $(am_07_fair_OBJECTS)
-07_fair_LDADD = $(LDADD)
-am_08_k_median_OBJECTS = 08_k_median.$(OBJEXT)
-08_k_median_OBJECTS = $(am_08_k_median_OBJECTS)
-08_k_median_LDADD = $(LDADD)
-am_09_k_heap_OBJECTS = 09_k_heap.$(OBJEXT)
-09_k_heap_OBJECTS = $(am_09_k_heap_OBJECTS)
-09_k_heap_LDADD = $(LDADD)
-am_10_k_heap_OBJECTS = 10_k_heap.$(OBJEXT)
-10_k_heap_OBJECTS = $(am_10_k_heap_OBJECTS)
-10_k_heap_LDADD = $(LDADD)
-am_11_stack_and_queue_OBJECTS = 11_stack_and_queue.$(OBJEXT)
-11_stack_and_queue_OBJECTS = $(am_11_stack_and_queue_OBJECTS)
-11_stack_and_queue_LDADD = $(LDADD)
 AM_V_P = $(am__v_P_@AM_V@)
 am__v_P_ = $(am__v_P_@AM_DEFAULT_V@)
 am__v_P_0 = false
@@ -172,16 +135,8 @@ AM_V_CXXLD = $(am__v_CXXLD_@AM_V@)
 am__v_CXXLD_ = $(am__v_CXXLD_@AM_DEFAULT_V@)
 am__v_CXXLD_0 = @echo "  CXXLD   " $@;
 am__v_CXXLD_1 = 
-SOURCES = $(00_basic_SOURCES) $(01_merge_SOURCES) $(02_sort_SOURCES) \
-	$(03_sort_SOURCES) $(04_knn_SOURCES) $(05_median_SOURCES) \
-	$(06_find_SOURCES) $(07_fair_SOURCES) $(08_k_median_SOURCES) \
-	$(09_k_heap_SOURCES) $(10_k_heap_SOURCES) \
-	$(11_stack_and_queue_SOURCES)
-DIST_SOURCES = $(00_basic_SOURCES) $(01_merge_SOURCES) \
-	$(02_sort_SOURCES) $(03_sort_SOURCES) $(04_knn_SOURCES) \
-	$(05_median_SOURCES) $(06_find_SOURCES) $(07_fair_SOURCES) \
-	$(08_k_median_SOURCES) $(09_k_heap_SOURCES) \
-	$(10_k_heap_SOURCES) $(11_stack_and_queue_SOURCES)
+SOURCES = $(00_basic_SOURCES)
+DIST_SOURCES = $(00_basic_SOURCES)
 am__can_run_installinfo = \
   case $$AM_UPDATE_INFO_DIR in \
     n|no|NO) false;; \
@@ -341,39 +296,6 @@ AM_CPPFLAGS = \
 00_basic_SOURCES = \
 	00_basic.cpp
 
-01_merge_SOURCES = \
-	01_merge.cpp
-
-02_sort_SOURCES = \
-	02_sort.cpp
-
-03_sort_SOURCES = \
-	03_sort.cpp
-
-04_knn_SOURCES = \
-	04_knn.cpp
-
-05_median_SOURCES = \
-	05_median.cpp
-
-06_find_SOURCES = \
-	06_find.cpp
-
-07_fair_SOURCES = \
-	07_fair.cpp
-
-08_k_median_SOURCES = \
-	08_k_median.cpp
-
-09_k_heap_SOURCES = \
-	09_k_heap.cpp
-
-10_k_heap_SOURCES = \
-	10_k_heap.cpp
-
-11_stack_and_queue_SOURCES = \
-	11_stack_and_queue.cpp
-
 all: all-am
 
 .SUFFIXES:
@@ -387,9 +309,9 @@ $(srcdir)/Makefile.in:  $(srcdir)/Makefile.am  $(am__configure_deps)
 	      exit 1;; \
 	  esac; \
 	done; \
-	echo ' cd $(top_srcdir) && $(AUTOMAKE) --gnu src/ch11/Makefile'; \
+	echo ' cd $(top_srcdir) && $(AUTOMAKE) --gnu src/ch20/Makefile'; \
 	$(am__cd) $(top_srcdir) && \
-	  $(AUTOMAKE) --gnu src/ch11/Makefile
+	  $(AUTOMAKE) --gnu src/ch20/Makefile
 .PRECIOUS: Makefile
 Makefile: $(srcdir)/Makefile.in $(top_builddir)/config.status
 	@case '$?' in \
@@ -422,50 +344,6 @@ clean-noinstPROGRAMS:
 	@rm -f 00_basic$(EXEEXT)
 	$(AM_V_CXXLD)$(CXXLINK) $(00_basic_OBJECTS) $(00_basic_LDADD) $(LIBS)
 
-01_merge$(EXEEXT): $(01_merge_OBJECTS) $(01_merge_DEPENDENCIES) $(EXTRA_01_merge_DEPENDENCIES) 
-	@rm -f 01_merge$(EXEEXT)
-	$(AM_V_CXXLD)$(CXXLINK) $(01_merge_OBJECTS) $(01_merge_LDADD) $(LIBS)
-
-02_sort$(EXEEXT): $(02_sort_OBJECTS) $(02_sort_DEPENDENCIES) $(EXTRA_02_sort_DEPENDENCIES) 
-	@rm -f 02_sort$(EXEEXT)
-	$(AM_V_CXXLD)$(CXXLINK) $(02_sort_OBJECTS) $(02_sort_LDADD) $(LIBS)
-
-03_sort$(EXEEXT): $(03_sort_OBJECTS) $(03_sort_DEPENDENCIES) $(EXTRA_03_sort_DEPENDENCIES) 
-	@rm -f 03_sort$(EXEEXT)
-	$(AM_V_CXXLD)$(CXXLINK) $(03_sort_OBJECTS) $(03_sort_LDADD) $(LIBS)
-
-04_knn$(EXEEXT): $(04_knn_OBJECTS) $(04_knn_DEPENDENCIES) $(EXTRA_04_knn_DEPENDENCIES) 
-	@rm -f 04_knn$(EXEEXT)
-	$(AM_V_CXXLD)$(CXXLINK) $(04_knn_OBJECTS) $(04_knn_LDADD) $(LIBS)
-
-05_median$(EXEEXT): $(05_median_OBJECTS) $(05_median_DEPENDENCIES) $(EXTRA_05_median_DEPENDENCIES) 
-	@rm -f 05_median$(EXEEXT)
-	$(AM_V_CXXLD)$(CXXLINK) $(05_median_OBJECTS) $(05_median_LDADD) $(LIBS)
-
-06_find$(EXEEXT): $(06_find_OBJECTS) $(06_find_DEPENDENCIES) $(EXTRA_06_find_DEPENDENCIES) 
-	@rm -f 06_find$(EXEEXT)
-	$(AM_V_CXXLD)$(CXXLINK) $(06_find_OBJECTS) $(06_find_LDADD) $(LIBS)
-
-07_fair$(EXEEXT): $(07_fair_OBJECTS) $(07_fair_DEPENDENCIES) $(EXTRA_07_fair_DEPENDENCIES) 
-	@rm -f 07_fair$(EXEEXT)
-	$(AM_V_CXXLD)$(CXXLINK) $(07_fair_OBJECTS) $(07_fair_LDADD) $(LIBS)
-
-08_k_median$(EXEEXT): $(08_k_median_OBJECTS) $(08_k_median_DEPENDENCIES) $(EXTRA_08_k_median_DEPENDENCIES) 
-	@rm -f 08_k_median$(EXEEXT)
-	$(AM_V_CXXLD)$(CXXLINK) $(08_k_median_OBJECTS) $(08_k_median_LDADD) $(LIBS)
-
-09_k_heap$(EXEEXT): $(09_k_heap_OBJECTS) $(09_k_heap_DEPENDENCIES) $(EXTRA_09_k_heap_DEPENDENCIES) 
-	@rm -f 09_k_heap$(EXEEXT)
-	$(AM_V_CXXLD)$(CXXLINK) $(09_k_heap_OBJECTS) $(09_k_heap_LDADD) $(LIBS)
-
-10_k_heap$(EXEEXT): $(10_k_heap_OBJECTS) $(10_k_heap_DEPENDENCIES) $(EXTRA_10_k_heap_DEPENDENCIES) 
-	@rm -f 10_k_heap$(EXEEXT)
-	$(AM_V_CXXLD)$(CXXLINK) $(10_k_heap_OBJECTS) $(10_k_heap_LDADD) $(LIBS)
-
-11_stack_and_queue$(EXEEXT): $(11_stack_and_queue_OBJECTS) $(11_stack_and_queue_DEPENDENCIES) $(EXTRA_11_stack_and_queue_DEPENDENCIES) 
-	@rm -f 11_stack_and_queue$(EXEEXT)
-	$(AM_V_CXXLD)$(CXXLINK) $(11_stack_and_queue_OBJECTS) $(11_stack_and_queue_LDADD) $(LIBS)
-
 mostlyclean-compile:
 	-rm -f *.$(OBJEXT)
 
@@ -473,17 +351,6 @@ distclean-compile:
 	-rm -f *.tab.c
 
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/00_basic.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/01_merge.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/02_sort.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/03_sort.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/04_knn.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/05_median.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/06_find.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/07_fair.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/08_k_median.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/09_k_heap.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/10_k_heap.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/11_stack_and_queue.Po@am__quote@
 
 .cpp.o:
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXXCOMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ $<

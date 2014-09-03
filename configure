@@ -16628,7 +16628,7 @@ fi
 done
 
 
-ac_config_files="$ac_config_files Makefile include/Makefile src/Makefile src/ch05/Makefile src/ch06/Makefile src/ch07/Makefile src/ch08/Makefile src/ch09/Makefile src/ch10/Makefile src/ch11/Makefile script/Makefile script/python/Makefile script/util/Makefile data/Makefile etc/Makefile"
+ac_config_files="$ac_config_files Makefile include/Makefile src/Makefile src/ch05/Makefile src/ch06/Makefile src/ch07/Makefile src/ch08/Makefile src/ch09/Makefile src/ch10/Makefile src/ch11/Makefile src/ch12/Makefile src/ch13/Makefile src/ch14/Makefile src/ch15/Makefile src/ch16/Makefile src/ch17/Makefile src/ch18/Makefile src/ch19/Makefile src/ch20/Makefile src/ch21/Makefile script/Makefile script/python/Makefile script/util/Makefile data/Makefile etc/Makefile"
 
 
 # Configure options: --enable-debug[=no].
@@ -17833,6 +17833,16 @@ do
     "src/ch09/Makefile") CONFIG_FILES="$CONFIG_FILES src/ch09/Makefile" ;;
     "src/ch10/Makefile") CONFIG_FILES="$CONFIG_FILES src/ch10/Makefile" ;;
     "src/ch11/Makefile") CONFIG_FILES="$CONFIG_FILES src/ch11/Makefile" ;;
+    "src/ch12/Makefile") CONFIG_FILES="$CONFIG_FILES src/ch12/Makefile" ;;
+    "src/ch13/Makefile") CONFIG_FILES="$CONFIG_FILES src/ch13/Makefile" ;;
+    "src/ch14/Makefile") CONFIG_FILES="$CONFIG_FILES src/ch14/Makefile" ;;
+    "src/ch15/Makefile") CONFIG_FILES="$CONFIG_FILES src/ch15/Makefile" ;;
+    "src/ch16/Makefile") CONFIG_FILES="$CONFIG_FILES src/ch16/Makefile" ;;
+    "src/ch17/Makefile") CONFIG_FILES="$CONFIG_FILES src/ch17/Makefile" ;;
+    "src/ch18/Makefile") CONFIG_FILES="$CONFIG_FILES src/ch18/Makefile" ;;
+    "src/ch19/Makefile") CONFIG_FILES="$CONFIG_FILES src/ch19/Makefile" ;;
+    "src/ch20/Makefile") CONFIG_FILES="$CONFIG_FILES src/ch20/Makefile" ;;
+    "src/ch21/Makefile") CONFIG_FILES="$CONFIG_FILES src/ch21/Makefile" ;;
     "script/Makefile") CONFIG_FILES="$CONFIG_FILES script/Makefile" ;;
     "script/python/Makefile") CONFIG_FILES="$CONFIG_FILES script/python/Makefile" ;;
     "script/util/Makefile") CONFIG_FILES="$CONFIG_FILES script/util/Makefile" ;;

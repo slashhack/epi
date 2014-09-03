@@ -21,11 +21,42 @@ int get_pivot(vector<int> vec, int &pivot) {
   return err;
 }
 
-int inplace1(int pivot, vector<int> &vec) {
+template<typename T>
+int inplace1(int pivot, vector<T> &vec) {
   int err = 0;
 
   // split vector into three parts, i) <, ii) == and iii) >
 
+  int lt = 0;
+  int eq = 0;
+
+  const T p = vec[pivot];
+
+  for(auto i: vec) {
+    if(p == i) {
+      ++eq;
+    } else if(p > i) {
+      ++lt;
+    }
+  }
+
+  int lt_idx = 0;
+  int eq_idx = lt;
+  int gt_idx = lt + eq;
+
+  for(int i = 0, i_max = vec.size(); i < i_max; ++i) {
+    T val = vec[i];
+
+    if(p == val) {
+
+    } else if(p > val) {
+
+    } else {
+
+    }
+  }
+
+  
   return err;
 }
 

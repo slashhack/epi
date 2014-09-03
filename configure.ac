@@ -60,6 +60,16 @@ AC_CONFIG_FILES([
         src/ch09/Makefile
         src/ch10/Makefile
         src/ch11/Makefile
+        src/ch12/Makefile
+        src/ch13/Makefile
+        src/ch14/Makefile
+        src/ch15/Makefile
+        src/ch16/Makefile
+        src/ch17/Makefile
+        src/ch18/Makefile
+        src/ch19/Makefile
+        src/ch20/Makefile
+        src/ch21/Makefile
         script/Makefile
         script/python/Makefile
         script/util/Makefile

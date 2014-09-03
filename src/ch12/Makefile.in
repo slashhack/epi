@@ -78,12 +78,14 @@ PRE_UNINSTALL = :
 POST_UNINSTALL = :
 build_triplet = @build@
 host_triplet = @host@
-noinst_PROGRAMS = 00_basic$(EXEEXT) 01_merge$(EXEEXT) 02_sort$(EXEEXT) \
-	03_sort$(EXEEXT) 04_knn$(EXEEXT) 05_median$(EXEEXT) \
-	06_find$(EXEEXT) 07_fair$(EXEEXT) 08_k_median$(EXEEXT) \
-	09_k_heap$(EXEEXT) 10_k_heap$(EXEEXT) \
-	11_stack_and_queue$(EXEEXT)
-subdir = src/ch11
+noinst_PROGRAMS = 00_basic$(EXEEXT) 01_bsearch$(EXEEXT) \
+	02_bsearch$(EXEEXT) 03_bsearch$(EXEEXT) \
+	04_bsearch_cyclic$(EXEEXT) 05_bsearch_unknown$(EXEEXT) \
+	06_sqrt$(EXEEXT) 07_sqrt$(EXEEXT) 08_search$(EXEEXT) \
+	09_search$(EXEEXT) 10_minmax$(EXEEXT) 11_search$(EXEEXT) \
+	12_minimize$(EXEEXT) 13_search$(EXEEXT) 14_search$(EXEEXT) \
+	15_search$(EXEEXT) 16_search$(EXEEXT)
+subdir = src/ch12
 DIST_COMMON = $(srcdir)/Makefile.in $(srcdir)/Makefile.am \
 	$(top_srcdir)/autoconf/depcomp
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
@@ -105,39 +107,54 @@ AM_V_lt = $(am__v_lt_@AM_V@)
 am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
 am__v_lt_0 = --silent
 am__v_lt_1 = 
-am_01_merge_OBJECTS = 01_merge.$(OBJEXT)
-01_merge_OBJECTS = $(am_01_merge_OBJECTS)
-01_merge_LDADD = $(LDADD)
-am_02_sort_OBJECTS = 02_sort.$(OBJEXT)
-02_sort_OBJECTS = $(am_02_sort_OBJECTS)
-02_sort_LDADD = $(LDADD)
-am_03_sort_OBJECTS = 03_sort.$(OBJEXT)
-03_sort_OBJECTS = $(am_03_sort_OBJECTS)
-03_sort_LDADD = $(LDADD)
-am_04_knn_OBJECTS = 04_knn.$(OBJEXT)
-04_knn_OBJECTS = $(am_04_knn_OBJECTS)
-04_knn_LDADD = $(LDADD)
-am_05_median_OBJECTS = 05_median.$(OBJEXT)
-05_median_OBJECTS = $(am_05_median_OBJECTS)
-05_median_LDADD = $(LDADD)
-am_06_find_OBJECTS = 06_find.$(OBJEXT)
-06_find_OBJECTS = $(am_06_find_OBJECTS)
-06_find_LDADD = $(LDADD)
-am_07_fair_OBJECTS = 07_fair.$(OBJEXT)
-07_fair_OBJECTS = $(am_07_fair_OBJECTS)
-07_fair_LDADD = $(LDADD)
-am_08_k_median_OBJECTS = 08_k_median.$(OBJEXT)
-08_k_median_OBJECTS = $(am_08_k_median_OBJECTS)
-08_k_median_LDADD = $(LDADD)
-am_09_k_heap_OBJECTS = 09_k_heap.$(OBJEXT)
-09_k_heap_OBJECTS = $(am_09_k_heap_OBJECTS)
-09_k_heap_LDADD = $(LDADD)
-am_10_k_heap_OBJECTS = 10_k_heap.$(OBJEXT)
-10_k_heap_OBJECTS = $(am_10_k_heap_OBJECTS)
-10_k_heap_LDADD = $(LDADD)
-am_11_stack_and_queue_OBJECTS = 11_stack_and_queue.$(OBJEXT)
-11_stack_and_queue_OBJECTS = $(am_11_stack_and_queue_OBJECTS)
-11_stack_and_queue_LDADD = $(LDADD)
+am_01_bsearch_OBJECTS = 01_bsearch.$(OBJEXT)
+01_bsearch_OBJECTS = $(am_01_bsearch_OBJECTS)
+01_bsearch_LDADD = $(LDADD)
+am_02_bsearch_OBJECTS = 02_bsearch.$(OBJEXT)
+02_bsearch_OBJECTS = $(am_02_bsearch_OBJECTS)
+02_bsearch_LDADD = $(LDADD)
+am_03_bsearch_OBJECTS = 03_bsearch.$(OBJEXT)
+03_bsearch_OBJECTS = $(am_03_bsearch_OBJECTS)
+03_bsearch_LDADD = $(LDADD)
+am_04_bsearch_cyclic_OBJECTS = 04_bsearch_cyclic.$(OBJEXT)
+04_bsearch_cyclic_OBJECTS = $(am_04_bsearch_cyclic_OBJECTS)
+04_bsearch_cyclic_LDADD = $(LDADD)
+am_05_bsearch_unknown_OBJECTS = 05_bsearch_unknown.$(OBJEXT)
+05_bsearch_unknown_OBJECTS = $(am_05_bsearch_unknown_OBJECTS)
+05_bsearch_unknown_LDADD = $(LDADD)
+am_06_sqrt_OBJECTS = 06_sqrt.$(OBJEXT)
+06_sqrt_OBJECTS = $(am_06_sqrt_OBJECTS)
+06_sqrt_LDADD = $(LDADD)
+am_07_sqrt_OBJECTS = 07_sqrt.$(OBJEXT)
+07_sqrt_OBJECTS = $(am_07_sqrt_OBJECTS)
+07_sqrt_LDADD = $(LDADD)
+am_08_search_OBJECTS = 08_search.$(OBJEXT)
+08_search_OBJECTS = $(am_08_search_OBJECTS)
+08_search_LDADD = $(LDADD)
+am_09_search_OBJECTS = 09_search.$(OBJEXT)
+09_search_OBJECTS = $(am_09_search_OBJECTS)
+09_search_LDADD = $(LDADD)
+am_10_minmax_OBJECTS = 10_minmax.$(OBJEXT)
+10_minmax_OBJECTS = $(am_10_minmax_OBJECTS)
+10_minmax_LDADD = $(LDADD)
+am_11_search_OBJECTS = 11_search.$(OBJEXT)
+11_search_OBJECTS = $(am_11_search_OBJECTS)
+11_search_LDADD = $(LDADD)
+am_12_minimize_OBJECTS = 12_minimize.$(OBJEXT)
+12_minimize_OBJECTS = $(am_12_minimize_OBJECTS)
+12_minimize_LDADD = $(LDADD)
+am_13_search_OBJECTS = 13_search.$(OBJEXT)
+13_search_OBJECTS = $(am_13_search_OBJECTS)
+13_search_LDADD = $(LDADD)
+am_14_search_OBJECTS = 14_search.$(OBJEXT)
+14_search_OBJECTS = $(am_14_search_OBJECTS)
+14_search_LDADD = $(LDADD)
+am_15_search_OBJECTS =
+15_search_OBJECTS = $(am_15_search_OBJECTS)
+15_search_LDADD = $(LDADD)
+am_16_search_OBJECTS = 16_search.$(OBJEXT)
+16_search_OBJECTS = $(am_16_search_OBJECTS)
+16_search_LDADD = $(LDADD)
 AM_V_P = $(am__v_P_@AM_V@)
 am__v_P_ = $(am__v_P_@AM_DEFAULT_V@)
 am__v_P_0 = false
@@ -172,16 +189,38 @@ AM_V_CXXLD = $(am__v_CXXLD_@AM_V@)
 am__v_CXXLD_ = $(am__v_CXXLD_@AM_DEFAULT_V@)
 am__v_CXXLD_0 = @echo "  CXXLD   " $@;
 am__v_CXXLD_1 = 
-SOURCES = $(00_basic_SOURCES) $(01_merge_SOURCES) $(02_sort_SOURCES) \
-	$(03_sort_SOURCES) $(04_knn_SOURCES) $(05_median_SOURCES) \
-	$(06_find_SOURCES) $(07_fair_SOURCES) $(08_k_median_SOURCES) \
-	$(09_k_heap_SOURCES) $(10_k_heap_SOURCES) \
-	$(11_stack_and_queue_SOURCES)
-DIST_SOURCES = $(00_basic_SOURCES) $(01_merge_SOURCES) \
-	$(02_sort_SOURCES) $(03_sort_SOURCES) $(04_knn_SOURCES) \
-	$(05_median_SOURCES) $(06_find_SOURCES) $(07_fair_SOURCES) \
-	$(08_k_median_SOURCES) $(09_k_heap_SOURCES) \
-	$(10_k_heap_SOURCES) $(11_stack_and_queue_SOURCES)
+COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \
+	$(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
+LTCOMPILE = $(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) \
+	$(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) \
+	$(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) \
+	$(AM_CFLAGS) $(CFLAGS)
+AM_V_CC = $(am__v_CC_@AM_V@)
+am__v_CC_ = $(am__v_CC_@AM_DEFAULT_V@)
+am__v_CC_0 = @echo "  CC      " $@;
+am__v_CC_1 = 
+CCLD = $(CC)
+LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) \
+	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) \
+	$(AM_LDFLAGS) $(LDFLAGS) -o $@
+AM_V_CCLD = $(am__v_CCLD_@AM_V@)
+am__v_CCLD_ = $(am__v_CCLD_@AM_DEFAULT_V@)
+am__v_CCLD_0 = @echo "  CCLD    " $@;
+am__v_CCLD_1 = 
+SOURCES = $(00_basic_SOURCES) $(01_bsearch_SOURCES) \
+	$(02_bsearch_SOURCES) $(03_bsearch_SOURCES) \
+	$(04_bsearch_cyclic_SOURCES) $(05_bsearch_unknown_SOURCES) \
+	$(06_sqrt_SOURCES) $(07_sqrt_SOURCES) $(08_search_SOURCES) \
+	$(09_search_SOURCES) $(10_minmax_SOURCES) $(11_search_SOURCES) \
+	$(12_minimize_SOURCES) $(13_search_SOURCES) \
+	$(14_search_SOURCES) $(15_search_SOURCES) $(16_search_SOURCES)
+DIST_SOURCES = $(00_basic_SOURCES) $(01_bsearch_SOURCES) \
+	$(02_bsearch_SOURCES) $(03_bsearch_SOURCES) \
+	$(04_bsearch_cyclic_SOURCES) $(05_bsearch_unknown_SOURCES) \
+	$(06_sqrt_SOURCES) $(07_sqrt_SOURCES) $(08_search_SOURCES) \
+	$(09_search_SOURCES) $(10_minmax_SOURCES) $(11_search_SOURCES) \
+	$(12_minimize_SOURCES) $(13_search_SOURCES) \
+	$(14_search_SOURCES) $(15_search_SOURCES) $(16_search_SOURCES)
 am__can_run_installinfo = \
   case $$AM_UPDATE_INFO_DIR in \
     n|no|NO) false;; \
@@ -341,38 +380,53 @@ AM_CPPFLAGS = \
 00_basic_SOURCES = \
 	00_basic.cpp
 
-01_merge_SOURCES = \
-	01_merge.cpp
+01_bsearch_SOURCES = \
+	01_bsearch.cpp
 
-02_sort_SOURCES = \
-	02_sort.cpp
+02_bsearch_SOURCES = \
+	02_bsearch.cpp
 
-03_sort_SOURCES = \
-	03_sort.cpp
+03_bsearch_SOURCES = \
+	03_bsearch.cpp
 
-04_knn_SOURCES = \
-	04_knn.cpp
+04_bsearch_cyclic_SOURCES = \
+	04_bsearch_cyclic.cpp
 
-05_median_SOURCES = \
-	05_median.cpp
+05_bsearch_unknown_SOURCES = \
+	05_bsearch_unknown.cpp
 
-06_find_SOURCES = \
-	06_find.cpp
+06_sqrt_SOURCES = \
+	06_sqrt.cpp
 
-07_fair_SOURCES = \
-	07_fair.cpp
+07_sqrt_SOURCES = \
+	07_sqrt.cpp
 
-08_k_median_SOURCES = \
-	08_k_median.cpp
+08_search_SOURCES = \
+	08_search.cpp
 
-09_k_heap_SOURCES = \
-	09_k_heap.cpp
+09_search_SOURCES = \
+	09_search.cpp
 
-10_k_heap_SOURCES = \
-	10_k_heap.cpp
+10_minmax_SOURCES = \
+	10_minmax.cpp
 
-11_stack_and_queue_SOURCES = \
-	11_stack_and_queue.cpp
+11_search_SOURCES = \
+	11_search.cpp
+
+12_minimize_SOURCES = \
+	12_minimize.cpp
+
+13_search_SOURCES = \
+	13_search.cpp
+
+14_search_SOURCES = \
+	14_search.cpp
+
+15_search_SOURCES = \
+	15_search.ccpp
+
+16_search_SOURCES = \
+	16_search.cpp
 
 all: all-am
 
@@ -387,9 +441,9 @@ $(srcdir)/Makefile.in:  $(srcdir)/Makefile.am  $(am__configure_deps)
 	      exit 1;; \
 	  esac; \
 	done; \
-	echo ' cd $(top_srcdir) && $(AUTOMAKE) --gnu src/ch11/Makefile'; \
+	echo ' cd $(top_srcdir) && $(AUTOMAKE) --gnu src/ch12/Makefile'; \
 	$(am__cd) $(top_srcdir) && \
-	  $(AUTOMAKE) --gnu src/ch11/Makefile
+	  $(AUTOMAKE) --gnu src/ch12/Makefile
 .PRECIOUS: Makefile
 Makefile: $(srcdir)/Makefile.in $(top_builddir)/config.status
 	@case '$?' in \
@@ -422,49 +476,69 @@ clean-noinstPROGRAMS:
 	@rm -f 00_basic$(EXEEXT)
 	$(AM_V_CXXLD)$(CXXLINK) $(00_basic_OBJECTS) $(00_basic_LDADD) $(LIBS)
 
-01_merge$(EXEEXT): $(01_merge_OBJECTS) $(01_merge_DEPENDENCIES) $(EXTRA_01_merge_DEPENDENCIES) 
-	@rm -f 01_merge$(EXEEXT)
-	$(AM_V_CXXLD)$(CXXLINK) $(01_merge_OBJECTS) $(01_merge_LDADD) $(LIBS)
+01_bsearch$(EXEEXT): $(01_bsearch_OBJECTS) $(01_bsearch_DEPENDENCIES) $(EXTRA_01_bsearch_DEPENDENCIES) 
+	@rm -f 01_bsearch$(EXEEXT)
+	$(AM_V_CXXLD)$(CXXLINK) $(01_bsearch_OBJECTS) $(01_bsearch_LDADD) $(LIBS)
 
-02_sort$(EXEEXT): $(02_sort_OBJECTS) $(02_sort_DEPENDENCIES) $(EXTRA_02_sort_DEPENDENCIES) 
-	@rm -f 02_sort$(EXEEXT)
-	$(AM_V_CXXLD)$(CXXLINK) $(02_sort_OBJECTS) $(02_sort_LDADD) $(LIBS)
+02_bsearch$(EXEEXT): $(02_bsearch_OBJECTS) $(02_bsearch_DEPENDENCIES) $(EXTRA_02_bsearch_DEPENDENCIES) 
+	@rm -f 02_bsearch$(EXEEXT)
+	$(AM_V_CXXLD)$(CXXLINK) $(02_bsearch_OBJECTS) $(02_bsearch_LDADD) $(LIBS)
 
-03_sort$(EXEEXT): $(03_sort_OBJECTS) $(03_sort_DEPENDENCIES) $(EXTRA_03_sort_DEPENDENCIES) 
-	@rm -f 03_sort$(EXEEXT)
-	$(AM_V_CXXLD)$(CXXLINK) $(03_sort_OBJECTS) $(03_sort_LDADD) $(LIBS)
+03_bsearch$(EXEEXT): $(03_bsearch_OBJECTS) $(03_bsearch_DEPENDENCIES) $(EXTRA_03_bsearch_DEPENDENCIES) 
+	@rm -f 03_bsearch$(EXEEXT)
+	$(AM_V_CXXLD)$(CXXLINK) $(03_bsearch_OBJECTS) $(03_bsearch_LDADD) $(LIBS)
 
-04_knn$(EXEEXT): $(04_knn_OBJECTS) $(04_knn_DEPENDENCIES) $(EXTRA_04_knn_DEPENDENCIES) 
-	@rm -f 04_knn$(EXEEXT)
-	$(AM_V_CXXLD)$(CXXLINK) $(04_knn_OBJECTS) $(04_knn_LDADD) $(LIBS)
+04_bsearch_cyclic$(EXEEXT): $(04_bsearch_cyclic_OBJECTS) $(04_bsearch_cyclic_DEPENDENCIES) $(EXTRA_04_bsearch_cyclic_DEPENDENCIES) 
+	@rm -f 04_bsearch_cyclic$(EXEEXT)
+	$(AM_V_CXXLD)$(CXXLINK) $(04_bsearch_cyclic_OBJECTS) $(04_bsearch_cyclic_LDADD) $(LIBS)
 
-05_median$(EXEEXT): $(05_median_OBJECTS) $(05_median_DEPENDENCIES) $(EXTRA_05_median_DEPENDENCIES) 
-	@rm -f 05_median$(EXEEXT)
-	$(AM_V_CXXLD)$(CXXLINK) $(05_median_OBJECTS) $(05_median_LDADD) $(LIBS)
+05_bsearch_unknown$(EXEEXT): $(05_bsearch_unknown_OBJECTS) $(05_bsearch_unknown_DEPENDENCIES) $(EXTRA_05_bsearch_unknown_DEPENDENCIES) 
+	@rm -f 05_bsearch_unknown$(EXEEXT)
+	$(AM_V_CXXLD)$(CXXLINK) $(05_bsearch_unknown_OBJECTS) $(05_bsearch_unknown_LDADD) $(LIBS)
 
-06_find$(EXEEXT): $(06_find_OBJECTS) $(06_find_DEPENDENCIES) $(EXTRA_06_find_DEPENDENCIES) 
-	@rm -f 06_find$(EXEEXT)
-	$(AM_V_CXXLD)$(CXXLINK) $(06_find_OBJECTS) $(06_find_LDADD) $(LIBS)
+06_sqrt$(EXEEXT): $(06_sqrt_OBJECTS) $(06_sqrt_DEPENDENCIES) $(EXTRA_06_sqrt_DEPENDENCIES) 
+	@rm -f 06_sqrt$(EXEEXT)
+	$(AM_V_CXXLD)$(CXXLINK) $(06_sqrt_OBJECTS) $(06_sqrt_LDADD) $(LIBS)
 
-07_fair$(EXEEXT): $(07_fair_OBJECTS) $(07_fair_DEPENDENCIES) $(EXTRA_07_fair_DEPENDENCIES) 
-	@rm -f 07_fair$(EXEEXT)
-	$(AM_V_CXXLD)$(CXXLINK) $(07_fair_OBJECTS) $(07_fair_LDADD) $(LIBS)
+07_sqrt$(EXEEXT): $(07_sqrt_OBJECTS) $(07_sqrt_DEPENDENCIES) $(EXTRA_07_sqrt_DEPENDENCIES) 
+	@rm -f 07_sqrt$(EXEEXT)
+	$(AM_V_CXXLD)$(CXXLINK) $(07_sqrt_OBJECTS) $(07_sqrt_LDADD) $(LIBS)
 
-08_k_median$(EXEEXT): $(08_k_median_OBJECTS) $(08_k_median_DEPENDENCIES) $(EXTRA_08_k_median_DEPENDENCIES) 
-	@rm -f 08_k_median$(EXEEXT)
-	$(AM_V_CXXLD)$(CXXLINK) $(08_k_median_OBJECTS) $(08_k_median_LDADD) $(LIBS)
+08_search$(EXEEXT): $(08_search_OBJECTS) $(08_search_DEPENDENCIES) $(EXTRA_08_search_DEPENDENCIES) 
+	@rm -f 08_search$(EXEEXT)
+	$(AM_V_CXXLD)$(CXXLINK) $(08_search_OBJECTS) $(08_search_LDADD) $(LIBS)
 
-09_k_heap$(EXEEXT): $(09_k_heap_OBJECTS) $(09_k_heap_DEPENDENCIES) $(EXTRA_09_k_heap_DEPENDENCIES) 
-	@rm -f 09_k_heap$(EXEEXT)
-	$(AM_V_CXXLD)$(CXXLINK) $(09_k_heap_OBJECTS) $(09_k_heap_LDADD) $(LIBS)
+09_search$(EXEEXT): $(09_search_OBJECTS) $(09_search_DEPENDENCIES) $(EXTRA_09_search_DEPENDENCIES) 
+	@rm -f 09_search$(EXEEXT)
+	$(AM_V_CXXLD)$(CXXLINK) $(09_search_OBJECTS) $(09_search_LDADD) $(LIBS)
 
-10_k_heap$(EXEEXT): $(10_k_heap_OBJECTS) $(10_k_heap_DEPENDENCIES) $(EXTRA_10_k_heap_DEPENDENCIES) 
-	@rm -f 10_k_heap$(EXEEXT)
-	$(AM_V_CXXLD)$(CXXLINK) $(10_k_heap_OBJECTS) $(10_k_heap_LDADD) $(LIBS)
+10_minmax$(EXEEXT): $(10_minmax_OBJECTS) $(10_minmax_DEPENDENCIES) $(EXTRA_10_minmax_DEPENDENCIES) 
+	@rm -f 10_minmax$(EXEEXT)
+	$(AM_V_CXXLD)$(CXXLINK) $(10_minmax_OBJECTS) $(10_minmax_LDADD) $(LIBS)
 
-11_stack_and_queue$(EXEEXT): $(11_stack_and_queue_OBJECTS) $(11_stack_and_queue_DEPENDENCIES) $(EXTRA_11_stack_and_queue_DEPENDENCIES) 
-	@rm -f 11_stack_and_queue$(EXEEXT)
-	$(AM_V_CXXLD)$(CXXLINK) $(11_stack_and_queue_OBJECTS) $(11_stack_and_queue_LDADD) $(LIBS)
+11_search$(EXEEXT): $(11_search_OBJECTS) $(11_search_DEPENDENCIES) $(EXTRA_11_search_DEPENDENCIES) 
+	@rm -f 11_search$(EXEEXT)
+	$(AM_V_CXXLD)$(CXXLINK) $(11_search_OBJECTS) $(11_search_LDADD) $(LIBS)
+
+12_minimize$(EXEEXT): $(12_minimize_OBJECTS) $(12_minimize_DEPENDENCIES) $(EXTRA_12_minimize_DEPENDENCIES) 
+	@rm -f 12_minimize$(EXEEXT)
+	$(AM_V_CXXLD)$(CXXLINK) $(12_minimize_OBJECTS) $(12_minimize_LDADD) $(LIBS)
+
+13_search$(EXEEXT): $(13_search_OBJECTS) $(13_search_DEPENDENCIES) $(EXTRA_13_search_DEPENDENCIES) 
+	@rm -f 13_search$(EXEEXT)
+	$(AM_V_CXXLD)$(CXXLINK) $(13_search_OBJECTS) $(13_search_LDADD) $(LIBS)
+
+14_search$(EXEEXT): $(14_search_OBJECTS) $(14_search_DEPENDENCIES) $(EXTRA_14_search_DEPENDENCIES) 
+	@rm -f 14_search$(EXEEXT)
+	$(AM_V_CXXLD)$(CXXLINK) $(14_search_OBJECTS) $(14_search_LDADD) $(LIBS)
+
+15_search$(EXEEXT): $(15_search_OBJECTS) $(15_search_DEPENDENCIES) $(EXTRA_15_search_DEPENDENCIES) 
+	@rm -f 15_search$(EXEEXT)
+	$(AM_V_CCLD)$(LINK) $(15_search_OBJECTS) $(15_search_LDADD) $(LIBS)
+
+16_search$(EXEEXT): $(16_search_OBJECTS) $(16_search_DEPENDENCIES) $(EXTRA_16_search_DEPENDENCIES) 
+	@rm -f 16_search$(EXEEXT)
+	$(AM_V_CXXLD)$(CXXLINK) $(16_search_OBJECTS) $(16_search_LDADD) $(LIBS)
 
 mostlyclean-compile:
 	-rm -f *.$(OBJEXT)
@@ -473,17 +547,21 @@ distclean-compile:
 	-rm -f *.tab.c
 
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/00_basic.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/01_merge.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/02_sort.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/03_sort.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/04_knn.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/05_median.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/06_find.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/07_fair.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/08_k_median.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/09_k_heap.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/10_k_heap.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/11_stack_and_queue.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/01_bsearch.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/02_bsearch.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/03_bsearch.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/04_bsearch_cyclic.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/05_bsearch_unknown.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/06_sqrt.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/07_sqrt.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/08_search.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/09_search.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/10_minmax.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/11_search.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/12_minimize.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/13_search.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/14_search.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/16_search.Po@am__quote@
 
 .cpp.o:
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXXCOMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ $<
